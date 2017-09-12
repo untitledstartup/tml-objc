@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		73AD54B21F682FA400C04EFC /* TMLPrivateConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 73AD54B11F682FA400C04EFC /* TMLPrivateConfig.plist */; };
 		74CAF4D7AE5F673571FAD626 /* libPods-TMLKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4DCAD61B82C00F44444A8C /* libPods-TMLKit.a */; };
 		AB7A5BA11F47212300327B36 /* TMLAPIRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = AB7A5B9F1F47212300327B36 /* TMLAPIRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AB7A5BA21F47212300327B36 /* TMLAPIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7A5BA01F47212300327B36 /* TMLAPIRequest.m */; };
@@ -293,6 +294,7 @@
 		374CDB8BFEDC96F6AD475835 /* Pods-TMLKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMLKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMLKitTests/Pods-TMLKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A9CF50CDF0545E105174A56 /* Pods-TMLKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMLKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMLKit/Pods-TMLKit.debug.xcconfig"; sourceTree = "<group>"; };
 		6B3F7AF805B2CC554A820C5C /* libPods-TMLKitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TMLKitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73AD54B11F682FA400C04EFC /* TMLPrivateConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = TMLPrivateConfig.plist; sourceTree = "<group>"; };
 		7DD4AA1189309754FD897BCC /* Pods-TMLKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMLKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMLKit/Pods-TMLKit.release.xcconfig"; sourceTree = "<group>"; };
 		9C4DCAD61B82C00F44444A8C /* libPods-TMLKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TMLKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB7A5B9F1F47212300327B36 /* TMLAPIRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TMLAPIRequest.h; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				C4FCD25D1C0FC7A200D723BC /* Info.plist */,
 				C4FCD3431C0FCB1B00D723BC /* TMLKit-Prefix.pch */,
 				C4FA31FD1C5078D9001902EB /* TMLPrivateConfig.h */,
+				73AD54B11F682FA400C04EFC /* TMLPrivateConfig.plist */,
 			);
 			path = TMLKit;
 			sourceTree = "<group>";
@@ -1072,13 +1075,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4FCD26C1C0FC7A200D723BC /* Build configuration list for PBXNativeTarget "TMLKit" */;
 			buildPhases = (
+				73AD54A41F682EE700C04EFC /* ShellScript */,
 				BE5C101823C9B54256E587D1 /* [CP] Check Pods Manifest.lock */,
 				C4FA32041C5079F5001902EB /* Generate TMLPrivateConfig.h */,
 				C4FCD2531C0FC7A200D723BC /* Sources */,
 				C4FCD2541C0FC7A200D723BC /* Frameworks */,
 				C4FCD2551C0FC7A200D723BC /* Headers */,
 				C4FCD2561C0FC7A200D723BC /* Resources */,
-				C4F8CBFB1C601EFD0037BE4B /* Update Version strings */,
 				0BFCEE17B52EF5CA125FB045 /* [CP] Copy Pods Resources */,
 				C4F8CBF71C5D7B3E0037BE4B /* Update Podspec Version */,
 			);
@@ -1232,6 +1235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AD54B21F682FA400C04EFC /* TMLPrivateConfig.plist in Resources */,
 				C4FCD39F1C10012500D723BC /* en.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1307,6 +1311,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMLKitTests/Pods-TMLKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		73AD54A41F682EE700C04EFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pod install";
+		};
 		B83F3BC5ED7231378FED575E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1356,20 +1373,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "podspec=\"${SRCROOT}/../TMLKit.podspec\"\ninfoplist=\"${SRCROOT}/TMLKit/Info.plist\"\n\nif [ ! -f $podspec ]; then\n    echo \"Cannot find ${podspec}\" >&2\n    return 1\nfi\n\nif [ ! -f $infoplist ]; then\n    echo \"Cannot find ${infoplist}\" >&2\n    return 1\nfi\n\ntargetVersion=$(grep -A1 CFBundleShortVersionString \"${infoplist}\" | tail -1 | sed -E \"s/[^0-9\\.]+//g\")\n\nsed -E \"s/(s.version *= *).*$/\\1\\\"${targetVersion}\\\"/\" \"${podspec}\" > \"${podspec}.new\" && mv \"${podspec}.new\" \"${podspec}\"";
-		};
-		C4F8CBFB1C601EFD0037BE4B /* Update Version strings */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Version strings";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\n# This script automatically sets the version and short version string of\n# an Xcode project from the Git repository containing the project.\n#\n# To use this script in Xcode 4, add the contents to a \"Run Script\" build\n# phase for your application target.\n\nset -o errexit\nset -o nounset\n\nINFO_PLIST=\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Info\"\nINFO_PLIST_DSYM=\"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}.dSYM/Contents/Info\"\nGIT_DIR=\"${PROJECT_DIR}/../.git\"\nlogger \"GIT_DIR: ${GIT_DIR}\"\nlogger \"PROJECT_DIR: ${PROJECT_DIR}\"\n\nGIT_HASH=$(git --git-dir=\"${GIT_DIR}\" --work-tree=\"${PROJECT_DIR}\" rev-parse --short HEAD)\nGIT_REVCOUNT=$(git --git-dir=\"${GIT_DIR}\" --work-tree=\"${PROJECT_DIR}\" rev-list HEAD | wc -l | tr -d ' ')\n\n# incremental number for Release builds, as that's what Apple prefers,\n# otherwise - let's include git hash\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\n    defaults write \"${INFO_PLIST}\" CFBundleVersion \"${GIT_REVCOUNT}\"\n    defaults write \"${INFO_PLIST_DSYM}\" CFBundleVersion \"${GIT_REVCOUNT}\"\nelse\n    defaults write \"${INFO_PLIST}\" CFBundleVersion \"${GIT_REVCOUNT}-${GIT_HASH}\"\n    defaults write \"${INFO_PLIST_DSYM}\" CFBundleVersion \"${GIT_REVCOUNT}-${GIT_HASH}\"\nfi";
 		};
 		C4FA32041C5079F5001902EB /* Generate TMLPrivateConfig.h */ = {
 			isa = PBXShellScriptBuildPhase;
