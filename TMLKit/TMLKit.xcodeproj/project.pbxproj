@@ -1072,6 +1072,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4FCD26C1C0FC7A200D723BC /* Build configuration list for PBXNativeTarget "TMLKit" */;
 			buildPhases = (
+				73AD54A41F682EE700C04EFC /* ShellScript */,
 				BE5C101823C9B54256E587D1 /* [CP] Check Pods Manifest.lock */,
 				C4FA32041C5079F5001902EB /* Generate TMLPrivateConfig.h */,
 				C4FCD2531C0FC7A200D723BC /* Sources */,
@@ -1305,6 +1306,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TMLKitTests/Pods-TMLKitTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		73AD54A41F682EE700C04EFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pod install";
 		};
 		B83F3BC5ED7231378FED575E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
